@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>QA Certification Roadmap</title>
+<meta name="description" content="An interactive map of software testing certifications by domain and level, from ISTQB Foundation to test automation, security and accessibility, with requirements, fees and sources for each.">
+<link rel="canonical" href="https://elliotborryn.github.io/qa-certification-roadmap/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="QA Certification Roadmap">
+<meta property="og:title" content="QA Certification Roadmap">
+<meta property="og:description" content="Pick the domain that matches your work, start at L1, and climb. Requirements, fees and sources for every software testing certification.">
+<meta property="og:url" content="https://elliotborryn.github.io/qa-certification-roadmap/">
+<meta property="og:image" content="https://elliotborryn.github.io/qa-certification-roadmap/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="QA Certification Roadmap: software testing certifications across 8 domains and 4 levels.">
+<meta name="twitter:card" content="summary_large_image">
+<script>try { const t = localStorage.getItem("qa-roadmap-theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef1f5; --surface: #ffffff; --sunk: #f3f5f8; --text: #121826; --muted: #586174; --faint: #8b93a3;
+  --line: #e1e5eb; --line-strong: #c9ced8; --accent: #2563eb; --shadow: rgba(18, 24, 38, .08); --shadow-lg: rgba(18, 24, 38, .16);
+  --c-ana: #c2780a; --c-auto: #0d8a8a; --c-agile: #d9433b; --c-spec: #3d8b37;
+  --c-sec: #2563eb; --c-a11y: #c0407e; --c-ai: #7048e8; --c-mgmt: #64748b;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14181f; --surface: #1c212b; --sunk: #191e27; --text: #eceef3; --muted: #a2a9b7; --faint: #778091;
+    --line: #2a303c; --line-strong: #3a4150; --accent: #7aa2ff; --shadow: rgba(0, 0, 0, .3); --shadow-lg: rgba(0, 0, 0, .55);
+    --c-ana: #f0b34f; --c-auto: #45c2bf; --c-agile: #f07a73; --c-spec: #7fcb72;
+    --c-sec: #6f9dff; --c-a11y: #e78bb8; --c-ai: #a88cff; --c-mgmt: #a3adbd;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14181f; --surface: #1c212b; --sunk: #191e27; --text: #eceef3; --muted: #a2a9b7; --faint: #778091;
+  --line: #2a303c; --line-strong: #3a4150; --accent: #7aa2ff; --shadow: rgba(0, 0, 0, .3); --shadow-lg: rgba(0, 0, 0, .55);
+  --c-ana: #f0b34f; --c-auto: #45c2bf; --c-agile: #f07a73; --c-spec: #7fcb72;
+  --c-sec: #6f9dff; --c-a11y: #e78bb8; --c-ai: #a88cff; --c-mgmt: #a3adbd;
+  color-scheme: dark;
+}
+:root { box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+*, *::before, *::after { box-sizing: inherit; }
+html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 140px); }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1600px; margin: 0 auto; padding: 0 28px; }
+
+/* Intro */
+.intro { padding-top: 48px; padding-bottom: 22px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 48px; }
+h1 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin: 0 0 12px; }
+.lede { margin: 0; color: var(--muted); max-width: 60ch; font-size: 1.02rem; }
+.intro-side { display: flex; align-items: center; gap: 28px; }
+.theme { width: 38px; height: 38px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); color: var(--muted); box-shadow: 0 1px 2px var(--shadow); cursor: pointer; display: grid; place-items: center; }
+.theme:hover { color: var(--text); }
+.theme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.prefs { display: flex; align-items: center; gap: 8px; }
+.prefs .pick select { height: 38px; }
+.facts dd .orig { display: block; font-size: .72rem; font-weight: 500; color: var(--faint); }
+.stats { display: flex; gap: 28px; margin: 0; padding: 0; list-style: none; }
+.stats li { display: flex; flex-direction: column; }
+.stats b { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stats span { font-size: .8rem; color: var(--muted); }
+
+/* Toolbar */
+.toolbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(12px) saturate(1.3); -webkit-backdrop-filter: blur(12px) saturate(1.3); }
+.toolbar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding-top: 12px; padding-bottom: 12px; }
+.field { position: relative; flex: 0 1 360px; min-width: 220px; }
+.field svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
+.field input {
+  font: inherit; font-size: .92rem; width: 100%; padding: 9px 40px 9px 40px; border-radius: 999px;
+  border: 1px solid var(--line-strong); background: var(--surface); color: var(--text); box-shadow: 0 1px 2px var(--shadow);
+}
+.field input::placeholder { color: var(--faint); }
+.field input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.kbd { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: .72rem; color: var(--faint); border: 1px solid var(--line-strong); border-radius: 5px; padding: 0 6px; line-height: 1.5; }
+#count { margin: 0; font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+#count b { color: var(--text); }
+.legend { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 18px; list-style: none; margin: 0 0 8px; padding: 0; font-size: .82rem; color: var(--muted); }
+.legend li { display: flex; align-items: center; gap: 7px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; display: inline-block; }
+.dot.new { background: var(--accent); }
+.dot.beta { box-shadow: inset 0 0 0 1.5px var(--muted); }
+.dot.rep { border-radius: 2px; background: var(--c-ana); }
+.dash { width: 18px; height: 12px; border-radius: 4px; border: 1px dashed var(--muted); display: inline-block; }
+
+/* Board: domains across, levels down */
+main { padding-top: 14px; }
+.board {
+  display: grid; grid-template-columns: 128px repeat(8, minmax(0, 1fr));
+  grid-template-rows: auto auto repeat(4, auto); column-gap: 10px;
+}
+.xaxis { grid-column: 2 / -1; grid-row: 1; display: flex; align-items: center; gap: 12px; padding-bottom: 10px; font-size: .76rem; font-weight: 600; color: var(--muted); }
+.xaxis::after { content: ""; flex: 1; height: 1px; background: var(--line-strong); }
+.corner { grid-column: 1; grid-row: 2; display: flex; align-items: flex-end; padding: 0 0 12px 22px; font-size: .76rem; font-weight: 600; color: var(--muted); position: sticky; top: var(--tb, 60px); z-index: 3; }
+
+.yaxis { grid-column: 1; grid-row: 3 / 7; position: relative; }
+.yaxis::before { content: ""; position: absolute; left: 6px; top: 14px; bottom: 6px; width: 1.5px; background: var(--line-strong); border-radius: 2px; }
+.yaxis::after { content: ""; position: absolute; left: 1.75px; top: 6px; border: 5px solid transparent; border-bottom: 8px solid var(--line-strong); border-top: 0; }
+.lvl { grid-column: 1; position: relative; z-index: 1; padding: 14px 8px 12px 22px; }
+.lvl::before { content: ""; position: absolute; left: 3px; top: 20px; width: 8px; height: 8px; border-radius: 50%; background: var(--bg); border: 1.5px solid var(--line-strong); }
+.lvl .k { font-size: .7rem; font-weight: 700; color: var(--faint); letter-spacing: .02em; }
+.lvl h2 { margin: 0; font-size: .95rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+.lvl p { margin: 3px 0 0; font-size: .74rem; color: var(--muted); line-height: 1.35; }
+.lvl .start { display: inline-block; margin-top: 8px; font-size: .72rem; font-weight: 700; color: var(--accent); }
+
+.lane { grid-row: 2 / 7; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 1px 2px var(--shadow), 0 4px 14px var(--shadow); }
+.dhead {
+  grid-row: 2; position: sticky; top: var(--tb, 60px); z-index: 4;
+  padding: 14px 12px 12px; border-radius: 16px 16px 0 0;
+  background: color-mix(in srgb, var(--c) 8%, var(--surface));
+  border: 1px solid var(--line); border-bottom: 2px solid color-mix(in srgb, var(--c) 55%, transparent);
+  margin: 0 0 0 0;
+}
+.dhead .ic { width: 24px; height: 24px; border-radius: 7px; background: color-mix(in srgb, var(--c) 18%, var(--surface)); color: var(--c); display: grid; place-items: center; margin-bottom: 8px; }
+.dhead h3 { margin: 0; font-size: .88rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+.dhead p { margin: 3px 0 0; font-size: .73rem; color: var(--muted); line-height: 1.35; }
+.dhead .n { display: block; margin-top: 6px; font-size: .72rem; font-weight: 600; color: color-mix(in srgb, var(--c) 80%, var(--text)); }
+
+.slot { position: relative; z-index: 1; padding: 8px 8px 10px; display: flex; flex-direction: column; gap: 5px; min-height: 64px; border-top: 1px dashed var(--line); }
+.slot.top { border-top: 0; }
+.slot.bottom { padding-bottom: 12px; }
+
+.item {
+  font: inherit; text-align: left; width: 100%; cursor: pointer; color: var(--text);
+  display: flex; flex-direction: column; gap: 1px; padding: 7px 10px 8px; border-radius: 9px;
+  border: 1px solid transparent; background: color-mix(in srgb, var(--c) 6%, var(--surface));
+  transition: background-color .12s, border-color .12s, opacity .15s, box-shadow .12s;
+}
+.item .code { font-size: .82rem; font-weight: 700; line-height: 1.25; letter-spacing: -0.005em; display: flex; align-items: center; gap: 6px; }
+.item .v { font-size: .7rem; color: var(--muted); line-height: 1.25; }
+.item:hover, .item[aria-expanded="true"] { background: color-mix(in srgb, var(--c) 14%, var(--surface)); border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+.item:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.item.pre { background: transparent; border: 1px dashed var(--line-strong); }
+.item.pre .code { font-weight: 600; color: var(--muted); }
+.searching .item { opacity: .2; }
+.searching .item.hit { opacity: 1; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.stack.searching .item:not(.hit), .stack.searching .grp:not(:has(.hit)), .stack.searching .sec:not(:has(.hit)) { display: none; }
+
+/* Stacked layout for smaller screens */
+.stack { display: none; }
+.board-scroll { position: relative; }
+.empty { display: none; margin: 18px 0 0; color: var(--muted); }
+.empty.show { display: block; }
+
+/* View toggle */
+.seg { display: inline-flex; padding: 3px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line-strong); box-shadow: 0 1px 2px var(--shadow); }
+.seg button { font: inherit; font-size: .8rem; font-weight: 600; color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 5px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.seg button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+.seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Filters */
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.chip { font: inherit; font-size: .8rem; font-weight: 600; color: var(--muted); background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; padding: 5px 12px; cursor: pointer; box-shadow: 0 1px 2px var(--shadow); display: inline-flex; align-items: center; gap: 6px; line-height: 1.5; }
+.chip:hover { color: var(--text); }
+.chip[aria-pressed="true"], .chip.on { color: var(--text); border-color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pick { position: relative; display: inline-flex; }
+.pick select { appearance: none; -webkit-appearance: none; padding-right: 30px; max-width: 190px; }
+.pick svg { position: absolute; right: 11px; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
+.clear { font: inherit; font-size: .8rem; font-weight: 600; color: var(--accent); background: none; border: 0; padding: 5px 4px; cursor: pointer; }
+.clear:hover { text-decoration: underline; }
+.clear:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.clear[hidden] { display: none; }
+
+/* List view (optional) */
+body.list .board-scroll { display: none; }
+body.list .stack { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+.sec { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; box-shadow: 0 1px 2px var(--shadow); }
+.sec .dhead { position: static; border: 0; border-bottom: 2px solid color-mix(in srgb, var(--c) 55%, transparent); border-radius: 0; }
+.grp { padding: 10px 12px 12px; border-top: 1px dashed var(--line); }
+.grp:first-of-type { border-top: 0; }
+.grp h4 { margin: 0 0 8px; display: flex; align-items: center; gap: 8px; font-size: .8rem; font-weight: 700; color: var(--text); letter-spacing: -0.005em; }
+.grp h4 .lv { font-size: .7rem; font-weight: 800; line-height: 1; padding: 4px 7px; border-radius: 6px; background: color-mix(in srgb, var(--c) 16%, var(--surface)); color: color-mix(in srgb, var(--c) 80%, var(--text)); font-variant-numeric: tabular-nums; }
+.grp .items { display: flex; flex-wrap: wrap; gap: 6px; }
+.grp .item { width: auto; min-width: 110px; }
+
+/* Board on medium screens: tighter */
+@media (max-width: 1280px) {
+  .board { grid-template-columns: 120px repeat(8, minmax(0, 1fr)); column-gap: 8px; }
+  .lvl h2 { font-size: .86rem; }
+  .lvl { padding-left: 20px; }
+  .dhead .n { font-size: .68rem; }
+  .lvl p, .dhead p { display: none; }
+  .lvl { padding-right: 4px; }
+  .dhead { padding: 12px 10px 10px; }
+  .dhead h3 { font-size: .82rem; }
+  .slot { padding: 6px 6px 8px; }
+  .item { padding: 6px 8px 7px; }
+  .item .code { font-size: .78rem; }
+}
+/* Board on small screens: scroll sideways, level axis stays pinned */
+@media (max-width: 1020px) {
+  .board-scroll { overflow-x: auto; padding-bottom: 10px; }
+  .board { min-width: 1000px; }
+  .dhead, .corner { position: static; }
+  .yaxis, .lvl, .corner { position: sticky; left: 0; }
+  .corner { top: auto; }
+  .lvl, .corner { background: var(--bg); z-index: 5; box-shadow: 10px 0 12px -12px var(--shadow-lg); }
+  .yaxis { z-index: 6; pointer-events: none; }
+}
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
+  .intro { padding-top: 28px; }
+  .stats { gap: 20px; }
+  .legend { justify-content: flex-start; }
+  .toolbar { position: static; }
+  /* Phones always get the list view */
+  .board-scroll, .seg { display: none; }
+  .stack, body.list .stack { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  .intro-side { width: 100%; justify-content: space-between; gap: 16px; }
+  .kbd { display: none; }
+  .field input { padding-right: 16px; }
+  body.card-open .scrim { display: block; }
+}
+.scrim { display: none; position: fixed; inset: 0; z-index: 55; background: rgba(8, 11, 16, .45); }
+
+/* Detail card */
+.card {
+  position: fixed; z-index: 60; width: min(360px, calc(100vw - 24px));
+  background: var(--surface); color: var(--text); border: 1px solid var(--line-strong);
+  border-radius: 14px; box-shadow: 0 24px 48px var(--shadow-lg), 0 2px 8px var(--shadow); overflow: hidden;
+}
+.card[hidden] { display: none; }
+.card-head { padding: 16px 16px 13px; background: color-mix(in srgb, var(--c) 8%, var(--surface)); border-bottom: 1px solid var(--line); position: relative; }
+.card .domain { display: inline-flex; align-items: center; gap: 7px; font-size: .74rem; font-weight: 600; color: color-mix(in srgb, var(--c) 80%, var(--text)); margin: 0 0 6px; }
+.card .domain i { width: 8px; height: 8px; border-radius: 3px; background: var(--c); }
+.card .code { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; padding-right: 30px; line-height: 1.2; }
+.card .full { margin: 3px 0 0; font-size: .86rem; color: var(--muted); }
+.card-body { padding: 13px 16px 14px; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; margin: 0 0 14px; }
+.facts div { display: flex; flex-direction: column; }
+.facts dt { font-size: .7rem; font-weight: 600; color: var(--faint); }
+.facts dd { margin: 0; font-size: .85rem; font-weight: 600; }
+.card h4 { font-size: .72rem; font-weight: 700; color: var(--faint); margin: 0 0 3px; }
+.card p.txt { margin: 0 0 11px; font-size: .86rem; }
+.card .src { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-top: 11px; border-top: 1px solid var(--line); font-size: .76rem; color: var(--muted); }
+.card .src .ok::before, .card .src .warn::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
+.card .src .ok::before { background: var(--c-spec); }
+.card .src .warn::before { background: var(--c-ana); }
+.card a { color: var(--accent); font-weight: 700; font-size: .82rem; text-decoration: none; white-space: nowrap; }
+.card a:hover { text-decoration: underline; }
+.card a:focus-visible, .close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.close { position: absolute; top: 11px; right: 11px; width: 28px; height: 28px; border-radius: 8px; border: 0; background: transparent; color: var(--faint); cursor: pointer; display: grid; place-items: center; }
+.close:hover { background: var(--surface); color: var(--text); }
+@media (max-width: 760px) {
+  .card { left: 12px !important; right: 12px; top: auto !important; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); width: auto; max-height: 74vh; overflow-y: auto; }
+}
+
+footer.wrap { margin-top: 56px; padding-bottom: 36px; color: var(--muted); font-size: .82rem; text-align: center; }
+footer .notes { border-top: 1px solid var(--line-strong); padding-top: 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px 40px; }
+footer p { margin: 0 auto; max-width: 68ch; }
+footer .copy { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); font-size: .76rem; color: var(--faint); display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 22px; }
+footer a { color: var(--accent); font-weight: 600; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+footer b { color: var(--text); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .item { transition: none; } }
+</style>
+</head>
+<body>
+
+<header class="wrap intro">
+  <div>
+    <h1>QA Certification Roadmap</h1>
+    <p class="lede">Software testing certifications, mapped by domain and level. Pick the domain that matches your work, start at L1, and climb. Select any certification for requirements, fees and where the information comes from.</p>
+  </div>
+  <div class="intro-side">
+    <ul class="stats" aria-label="Summary">
+      <li><b id="s-total">0</b><span>Certifications</span></li>
+      <li><b id="s-domains">0</b><span>Domains</span></li>
+      <li><b id="s-levels">0</b><span>Levels</span></li>
+    </ul>
+    <div class="prefs">
+      <span class="pick">
+        <select class="chip" id="currency" aria-label="Currency for exam fees"></select>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </span>
+      <button type="button" class="theme" id="theme" aria-label="Switch theme"></button>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <div class="field">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Search code, name, vendor or domain" autocomplete="off" aria-label="Search certifications">
+      <span class="kbd" aria-hidden="true">/</span>
+    </div>
+    <p id="count" aria-live="polite"></p>
+    <div class="filters" role="group" aria-label="Filters">
+      <button type="button" class="chip" id="f-new" aria-pressed="false"><span class="dot new" aria-hidden="true"></span>New</button>
+      <span class="pick">
+        <select class="chip" id="f-vendorname" aria-label="Filter by vendor"><option value="">All vendors</option></select>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </span>
+      <button type="button" class="clear" id="f-clear" hidden>Clear</button>
+    </div>
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" id="v-board" aria-pressed="true">Roadmap</button>
+      <button type="button" id="v-list" aria-pressed="false">List</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <ul class="legend" aria-label="Legend">
+    <li><span class="dot new"></span>New in 2025–2026</li>
+    <li><span class="dot rep"></span>From industry reports</li>
+  </ul>
+  <div class="board-scroll" tabindex="-1"><div class="board" id="board"></div></div>
+  <div class="stack" id="stack"></div>
+  <p class="empty" id="empty"></p>
+</main>
+
+<footer class="wrap">
+  <div class="notes">
+    <p><b>How to use it.</b> Each domain is its own path. Most ISTQB certifications require the Foundation Level (CTFL) first, so start there, then move up in the domain that matches your work.</p>
+    <p><b>Accuracy.</b> Checked in <span id="last-checked"></span>. Each certification shows whether it was checked on the vendor's page or comes from industry reports. Fees are US-dollar exam prices and vary by region and membership. ISTQB fees are set by national exam boards and differ per country.</p>
+    <p><b>Not included.</b><br>
+      Phased out: ISTQB CTFL-AT and CT-ATT (now CTAL-AT v2.0), CTAL-TA v3.1, CT-AI v1.0 and iSQI CAT.<br>
+      Replaced: Sogeti TMap NEXT (now TMAP).<br>
+      Retired: QAI (now PeopleCert) CSTE, CAST and CMST, February 2026.</p>
+  </div>
+  <div class="copy">
+    <span>© 2026 Elliot (<a href="https://github.com/elliotborryn" target="_blank" rel="noopener noreferrer">@elliotborryn</a>). All rights reserved.</span>
+    <span><a href="https://elliotborryn.github.io/ai-certification-roadmap/">AI Certification Roadmap</a></span>
+    <span>Missing a certification? <a href="https://github.com/elliotborryn/qa-certification-roadmap/issues/new?template=suggest-certification.yml" target="_blank" rel="noopener noreferrer">Suggest one</a></span>
+  </div>
+</footer>
+
+<div class="scrim" aria-hidden="true"></div>
+<div class="card" id="card" role="dialog" aria-modal="false" aria-labelledby="card-code" hidden>
+  <div class="card-head">
+    <p class="domain"><i></i><span id="card-domain"></span></p>
+    <p class="code" id="card-code"></p>
+    <p class="full" id="card-full"></p>
+    <button class="close" id="close" type="button" aria-label="Close details">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </div>
+  <div class="card-body">
+    <dl class="facts">
+      <div><dt>Vendor</dt><dd id="card-vendor"></dd></div>
+      <div><dt>Level</dt><dd id="card-level"></dd></div>
+      <div><dt>Exam fee</dt><dd id="card-price"></dd></div>
+      <div><dt>Status</dt><dd id="card-status"></dd></div>
+    </dl>
+    <h4>What it covers</h4>
+    <p class="txt" id="card-what"></p>
+    <h4>Before you start</h4>
+    <p class="txt" id="card-before"></p>
+    <div class="src"><span id="card-srctext"></span><a id="card-link" href="#" target="_blank" rel="noopener noreferrer">Vendor page</a></div>
+  </div>
+</div>
+
+<script>
+/* Data is loaded from data/certifications.json. Fields: domain = column key, level = row (1 = entry), source: "vendor" = checked on the vendor's own page, "reports" = industry reports only */
+let COLUMNS = [], TIERS = {}, CERTS = [];
+
+const STATUS = { active: "Active", new: "Active, launched 2025–2026", beta: "Beta exam, details may change", prereq: "Prerequisite for this path" };
+const SHORT_STATUS = { active: "Active", new: "New", beta: "Beta", prereq: "Prerequisite" };
+const ICONS = {
+  ana:   '<path d="M9 11l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="3"/>',
+  auto:  '<path d="M12 8V4M8 4h8"/><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M9 13h.01M15 13h.01M10 16h4"/>',
+  agile: '<path d="M4 12a8 8 0 0 1 14-5.3L20 8"/><path d="M20 4v4h-4"/><path d="M20 12a8 8 0 0 1-14 5.3L4 16"/><path d="M4 20v-4h4"/>',
+  spec:  '<path d="M4 18a8 8 0 1 1 16 0"/><path d="M12 18l4-5"/>',
+  sec:   '<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/>',
+  a11y:  '<circle cx="12" cy="5" r="1.6"/><path d="M5 9l7 1.5L19 9"/><path d="M12 10.5V14l-3 6M12 14l3 6"/>',
+  ai:    '<path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/>',
+  mgmt:  '<circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5.2"/>'
+};
+const icon = k => `<span class="ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${ICONS[k]}</svg></span>`;
+
+const board = document.getElementById("board"), stack = document.getElementById("stack");
+const cvar = k => `var(--c-${k})`;
+const colOf = k => COLUMNS.find(c => c.key === k);
+const mk = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+const esc = s => s.replace(/[&<>"]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]));
+let TOP_DOWN = [];
+const items = [];
+const count = key => CERTS.filter(x => x.domain === key && x.status !== "prereq").length;
+
+function makeItem(cert, i, t) {
+  const b = mk("button", "item" + (cert.status === "prereq" ? " pre" : ""));
+  b.type = "button"; b.dataset.i = i;
+  b.style.setProperty("--c", cvar(cert.domain));
+  b.setAttribute("aria-expanded", "false"); b.setAttribute("aria-controls", "card");
+  const st = cert.status === "new" ? ", new" : cert.status === "beta" ? ", beta" : cert.status === "prereq" ? ", prerequisite" : "";
+  const rep = cert.source === "reports" ? ", from industry reports" : "";
+  b.setAttribute("aria-label", `${cert.code}, ${cert.vendor}, level ${t} ${TIERS[t].name}${st}${rep}`);
+  const d = cert.status === "new" ? '<span class="dot new" aria-hidden="true"></span>' : cert.status === "beta" ? '<span class="dot beta" aria-hidden="true"></span>' : "";
+  const r = cert.source === "reports" ? '<span class="dot rep" aria-hidden="true"></span>' : "";
+  b.innerHTML = `<span class="code">${esc(cert.code)}${d}${r}</span><span class="v">${esc(cert.vendor)}</span>`;
+  items.push(b);
+  return b;
+}
+const headHTML = c => `${icon(c.key)}<h3>${esc(c.name)}</h3><p>${esc(c.proves)}</p><span class="n">${count(c.key)} certification${count(c.key) === 1 ? "" : "s"}</span>`;
+
+function build() {
+  /* Wide board */
+  board.appendChild(mk("div", "xaxis", "Domains"));
+  board.appendChild(mk("div", "corner", "Level"));
+  board.appendChild(mk("div", "yaxis"));
+  TOP_DOWN.forEach((t, r) => {
+    const l = mk("div", "lvl", `<span class="k">L${t}</span><h2>${esc(TIERS[t].name)}</h2><p>${esc(TIERS[t].description)}</p>${t === 1 ? '<span class="start">Start here</span>' : ""}`);
+    l.style.gridRow = String(r + 3);
+    board.appendChild(l);
+  });
+  COLUMNS.forEach((c, ci) => {
+    const col = String(ci + 2);
+    const lane = mk("div", "lane"); lane.style.gridColumn = col; board.appendChild(lane);
+    const h = mk("div", "dhead", headHTML(c)); h.style.gridColumn = col; h.style.setProperty("--c", cvar(c.key)); board.appendChild(h);
+    TOP_DOWN.forEach((t, r) => {
+      const s = mk("div", "slot" + (r === 0 ? " top" : "") + (t === 1 ? " bottom" : ""));
+      s.style.gridColumn = col; s.style.gridRow = String(r + 3);
+      CERTS.forEach((cert, i) => { if (cert.domain === c.key && cert.level === t) s.appendChild(makeItem(cert, i, t)); });
+      board.appendChild(s);
+    });
+  });
+
+  /* Stacked cards */
+  COLUMNS.forEach(c => {
+    const sec = mk("section", "sec"); sec.style.setProperty("--c", cvar(c.key));
+    sec.setAttribute("aria-label", c.name);
+    const h = mk("div", "dhead", headHTML(c)); sec.appendChild(h);
+    [...TOP_DOWN].reverse().forEach(t => {
+      const list = CERTS.map((x, i) => [x, i]).filter(([x]) => x.domain === c.key && x.level === t);
+      if (!list.length) return;
+      const g = mk("div", "grp", `<h4><span class="lv">L${t}</span>${esc(TIERS[t].name)}</h4>`);
+      const wrap = mk("div", "items");
+      list.forEach(([x, i]) => wrap.appendChild(makeItem(x, i, t)));
+      g.appendChild(wrap); sec.appendChild(g);
+    });
+    stack.appendChild(sec);
+  });
+}
+
+/* Detail card */
+const card = document.getElementById("card");
+const $ = id => document.getElementById(id);
+let current = null, pinned = false, timer = null;
+function fill(c) {
+  card.style.setProperty("--c", cvar(c.domain));
+  $("card-domain").textContent = colOf(c.domain).name;
+  $("card-code").textContent = c.code;
+  $("card-full").textContent = c.name;
+  $("card-vendor").textContent = c.vendor;
+  $("card-level").textContent = `L${c.level} ${TIERS[c.level].name}`;
+  const price = priceIn(c.price);
+  $("card-price").textContent = price;
+  if (price !== c.price) $("card-price").appendChild(mk("span", "orig", null)).textContent = `US price: ${c.price}`;
+  $("card-status").textContent = SHORT_STATUS[c.status];
+  $("card-what").textContent = c.what;
+  $("card-before").textContent = c.before;
+  const s = $("card-srctext");
+  s.className = c.source === "vendor" ? "ok" : "warn";
+  s.textContent = c.source === "vendor" ? "Checked on the vendor's page" : "From industry reports, confirm with vendor";
+  $("card-link").href = c.url;
+  $("card-link").setAttribute("aria-label", `Open ${c.vendor} page for ${c.code} in a new tab`);
+}
+function place(el) {
+  if (window.matchMedia("(max-width: 760px)").matches) return;
+  const r = el.getBoundingClientRect(), cw = card.offsetWidth, ch = card.offsetHeight, g = 10;
+  let left = r.right + g;
+  if (left + cw > window.innerWidth - 12) left = r.left - cw - g;
+  if (left < 12) left = Math.max(12, Math.min(r.left, window.innerWidth - cw - 12));
+  let top = r.top - 6;
+  const minTop = (parseInt(getComputedStyle(document.documentElement).getPropertyValue("--tb")) || 60) + 8;
+  if (top + ch > window.innerHeight - 12) top = window.innerHeight - ch - 12;
+  top = Math.max(minTop, top);
+  card.style.left = left + "px"; card.style.top = top + "px";
+}
+function show(el, pin) {
+  clearTimeout(timer);
+  if (current && current !== el) current.setAttribute("aria-expanded", "false");
+  current = el; fill(CERTS[el.dataset.i]); card.hidden = false; place(el);
+  document.body.classList.add("card-open");
+  el.setAttribute("aria-expanded", "true"); pinned = !!pin;
+}
+function hide(refocus) {
+  const t = current; card.hidden = true; pinned = false;
+  document.body.classList.remove("card-open");
+  if (t) t.setAttribute("aria-expanded", "false");
+  current = null; if (refocus && t) t.focus({ preventScroll: true });
+}
+const soft = () => { if (!pinned) timer = setTimeout(() => hide(false), 140); };
+const canHover = window.matchMedia("(hover: hover)").matches;
+function wire() {
+  items.forEach(b => {
+    if (canHover) {
+      b.addEventListener("mouseenter", () => { if (!pinned) show(b, false); });
+      b.addEventListener("mouseleave", soft);
+    }
+    b.addEventListener("focus", () => { if (!pinned && b.matches(":focus-visible")) show(b, false); });
+    b.addEventListener("click", e => { e.stopPropagation(); if (pinned && current === b) hide(false); else show(b, true); });
+  });
+}
+card.addEventListener("mouseenter", () => clearTimeout(timer));
+card.addEventListener("mouseleave", soft);
+card.addEventListener("click", e => e.stopPropagation());
+$("close").addEventListener("click", () => hide(true));
+document.addEventListener("click", () => { if (!card.hidden) hide(false); });
+document.addEventListener("focusout", () => setTimeout(() => {
+  const a = document.activeElement;
+  if (!pinned && !card.hidden && !card.contains(a) && !items.includes(a)) hide(false);
+}, 0));
+const reposition = () => { if (current && !card.hidden) place(current); };
+window.addEventListener("resize", reposition);
+window.addEventListener("scroll", reposition, { passive: true });
+
+/* Search */
+const q = $("q"), countEl = $("count"), empty = $("empty");
+let total = 0;
+const fNew = $("f-new"), fName = $("f-vendorname"), fClear = $("f-clear");
+const pressed = b => b.getAttribute("aria-pressed") === "true";
+function run() {
+  const term = q.value.trim().toLowerCase();
+  const onlyNew = pressed(fNew), vendor = fName.value;
+  const filtering = onlyNew || !!vendor, active = !!term || filtering;
+  const hits = new Set();
+  CERTS.forEach((c, i) => {
+    if (!active) return;
+    if (term && !`${c.code} ${c.name} ${c.vendor} ${colOf(c.domain).name}`.replace(/\u00a0/g, " ").toLowerCase().includes(term)) return;
+    if (onlyNew && c.status !== "new") return;
+    if (vendor && c.vendor !== vendor) return;
+    hits.add(i);
+  });
+  [board, stack].forEach(el => el.classList.toggle("searching", active));
+  items.forEach(b => b.classList.toggle("hit", hits.has(+b.dataset.i)));
+  fName.classList.toggle("on", !!vendor);
+  fClear.hidden = !active;
+  const n = [...hits].filter(i => CERTS[i].status !== "prereq").length;
+  countEl.innerHTML = active ? `<b>${n}</b> of ${total} match` : `Showing all <b>${total}</b>`;
+  if (active && n === 0) {
+    empty.textContent = term && !filtering
+      ? `Nothing matches "${q.value.trim()}". Try a vendor such as ISTQB, a code such as CTFL, or a domain such as automation.`
+      : "Nothing matches the current search and filters. Try removing a filter.";
+    empty.classList.add("show");
+  } else empty.classList.remove("show");
+}
+fNew.addEventListener("click", () => { fNew.setAttribute("aria-pressed", String(!pressed(fNew))); run(); });
+fName.addEventListener("change", run);
+fClear.addEventListener("click", () => {
+  q.value = ""; fName.value = "";
+  fNew.setAttribute("aria-pressed", "false");
+  run();
+});
+q.addEventListener("input", run);
+q.addEventListener("keydown", e => { if (e.key === "Escape") { q.value = ""; run(); q.blur(); } });
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && !card.hidden) { hide(true); return; }
+  if (e.key === "/" && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+});
+/* View toggle */
+function setView(v) {
+  document.body.classList.toggle("list", v === "list");
+  $("v-board").setAttribute("aria-pressed", String(v !== "list"));
+  $("v-list").setAttribute("aria-pressed", String(v === "list"));
+  hide(false);
+  try { localStorage.setItem("qa-roadmap-view", v); } catch (e) {}
+}
+$("v-board").addEventListener("click", () => setView("board"));
+$("v-list").addEventListener("click", () => setView("list"));
+try { if (localStorage.getItem("qa-roadmap-view") === "list") setView("list"); } catch (e) {}
+/* Currency: fees are stored in USD; other currencies are approximate conversions */
+const CURRENCIES = ["USD", "EUR", "GBP", "CAD", "AUD", "NZD", "CHF", "SEK", "NOK", "DKK", "PLN", "INR", "JPY", "SGD", "BRL", "MXN", "ZAR"];
+const EURO = "AT BE CY DE EE ES FI FR GR HR IE IT LT LU LV MT NL PT SI SK".split(" ");
+const REGION = { GB: "GBP", CA: "CAD", AU: "AUD", NZ: "NZD", CH: "CHF", LI: "CHF", SE: "SEK", NO: "NOK", DK: "DKK", PL: "PLN", IN: "INR", JP: "JPY", SG: "SGD", BR: "BRL", MX: "MXN", ZA: "ZAR" };
+const cur = $("currency");
+let rates = { USD: 1 };
+function guessCurrency() {
+  try { const saved = localStorage.getItem("qa-roadmap-currency"); if (CURRENCIES.includes(saved)) return saved; } catch (e) {}
+  for (const lang of navigator.languages || [navigator.language]) {
+    const region = (lang.split("-")[1] || "").toUpperCase();
+    if (EURO.includes(region)) return "EUR";
+    if (REGION[region]) return REGION[region];
+  }
+  return "USD";
+}
+function priceIn(p) {
+  const code = cur.value;
+  if (code === "USD" || !rates[code] || !/\$\d/.test(p)) return p;
+  const fmt = new Intl.NumberFormat("en", { style: "currency", currency: code, minimumFractionDigits: 0, maximumFractionDigits: 0 });
+  let first = true;
+  return p.replace(/^About (?=\$)/, "").replace(/\$([\d,]+(?:\.\d+)?)/g, (_, n) => {
+    const out = (first ? "≈ " : "") + fmt.format(parseFloat(n.replace(/,/g, "")) * rates[code]);
+    first = false;
+    return out;
+  });
+}
+CURRENCIES.forEach(c => cur.add(new Option(c, c)));
+cur.value = guessCurrency();
+cur.addEventListener("change", () => {
+  try { localStorage.setItem("qa-roadmap-currency", cur.value); } catch (e) {}
+  if (current && !card.hidden) fill(CERTS[current.dataset.i]);
+});
+fetch("https://api.frankfurter.dev/v1/latest?from=USD")
+  .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+  .then(d => {
+    rates = { USD: 1, ...d.rates };
+    if (current && !card.hidden) fill(CERTS[current.dataset.i]);
+  })
+  .catch(() => {
+    cur.value = "USD"; cur.disabled = true;
+    cur.title = "Exchange rates are unavailable right now, so fees are shown in USD.";
+  });
+
+/* Theme toggle */
+const SUN = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+const MOON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const isDark = () => (document.documentElement.dataset.theme || (darkQuery.matches ? "dark" : "light")) === "dark";
+function paintTheme() {
+  const dark = isDark();
+  $("theme").innerHTML = dark ? SUN : MOON;
+  $("theme").setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
+}
+$("theme").addEventListener("click", () => {
+  const next = isDark() ? "light" : "dark";
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem("qa-roadmap-theme", next); } catch (e) {}
+  paintTheme();
+});
+darkQuery.addEventListener?.("change", paintTheme);
+paintTheme();
+
+const tb = document.querySelector(".toolbar");
+const setTb = () => document.documentElement.style.setProperty("--tb", tb.offsetHeight + "px");
+setTb(); window.addEventListener("resize", setTb);
+
+/* Load data, then render */
+const monthYear = ym => { const [y, m] = ym.split("-").map(Number); return new Date(y, m - 1).toLocaleDateString("en-US", { month: "long", year: "numeric" }); };
+fetch("data/certifications.json", { cache: "no-cache" })
+  .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+  .then(data => {
+    COLUMNS = data.domains;
+    data.levels.forEach(l => { TIERS[l.level] = l; });
+    TOP_DOWN = data.levels.map(l => l.level).sort((a, b) => b - a);
+    CERTS = data.certifications;
+    total = CERTS.filter(c => c.status !== "prereq").length;
+    $("s-total").textContent = total;
+    $("s-domains").textContent = COLUMNS.length;
+    $("s-levels").textContent = data.levels.length;
+    $("last-checked").textContent = monthYear(data.meta.lastChecked);
+    [...new Set(CERTS.map(c => c.vendor))].sort((a, b) => a.localeCompare(b)).forEach(v => fName.add(new Option(v, v)));
+    build(); wire(); run(); setTb();
+  })
+  .catch(err => {
+    console.error(err);
+    q.disabled = true;
+    [fNew, fName].forEach(el => { el.disabled = true; });
+    empty.textContent = "Couldn't load certification data. If you opened this file directly, run a local server (see README).";
+    empty.classList.add("show");
+  });
+</script>
+</body>
+</html>

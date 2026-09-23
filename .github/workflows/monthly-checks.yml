@@ -1,0 +1,72 @@
+name: Monthly checks
+
+# On the 1st of each month:
+#  - open an issue if data/certifications.json hasn't been re-checked in 6+ months
+#  - open an issue listing certification links that no longer load
+# Only one open issue of each kind at a time; a new broken-link report is added as a comment.
+on:
+  schedule:
+    - cron: "0 9 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  stale-data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check data age
+        id: age
+        run: |
+          set +e
+          node scripts/validate.mjs --fail-if-stale
+          code=$?
+          set -e
+          if [ "$code" = "1" ]; then exit 1; fi
+          echo "stale=$([ "$code" = "2" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - name: Open a reminder issue
+        if: steps.age.outputs.stale == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Certification data needs a re-check"
+          open=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq 'length')
+          if [ "$open" != "0" ]; then echo "Reminder issue already open."; exit 0; fi
+          cat > body.md <<'BODY'
+          The roadmap data hasn't been re-checked in more than 6 months.
+
+          **To do:** check each certification against its vendor page (fees, prerequisites, status, retirements), update `data/certifications.json`, set `meta.lastChecked` to the current month, and run `node scripts/validate.mjs`.
+
+          With Claude Code, ask: *"Re-check all certifications against their vendor pages and update the data."*
+          BODY
+          gh issue create --title "$title" --body-file body.md
+
+  broken-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check links
+        id: links
+        run: |
+          set +e
+          node scripts/check-links.mjs --report report.md
+          code=$?
+          echo "broken=$([ "$code" = "1" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+      - name: Open or update the broken-links issue
+        if: steps.links.outputs.broken == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Broken certification links"
+          num=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')
+          if [ -n "$num" ]; then gh issue comment "$num" --body-file report.md
+          else gh issue create --title "$title" --body-file report.md; fi
