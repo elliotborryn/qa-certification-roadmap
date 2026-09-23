@@ -58,7 +58,8 @@ body {
 
 /* Intro */
 .intro { padding-top: 48px; padding-bottom: 22px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 48px; }
-h1 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin: 0 0 12px; }
+h1 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; margin: 0 0 12px; display: flex; align-items: flex-start; gap: .32em; }
+.logo { width: 1.05em; height: 1.05em; flex-shrink: 0; }
 .lede { margin: 0; color: var(--muted); max-width: 60ch; font-size: 1.02rem; }
 .intro-side { display: flex; align-items: center; gap: 28px; }
 .theme { width: 38px; height: 38px; flex-shrink: 0; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); color: var(--muted); box-shadow: 0 1px 2px var(--shadow); cursor: pointer; display: grid; place-items: center; }
@@ -272,7 +273,7 @@ footer b { color: var(--text); font-weight: 700; }
 
 <header class="wrap intro">
   <div>
-    <h1>QA Certification Roadmap</h1>
+    <h1><svg class="logo" viewBox="13 9 38 46" aria-hidden="true"><defs><linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#45c2bf"/><stop offset=".5" stop-color="#6f9dff"/><stop offset="1" stop-color="#a88cff"/></linearGradient></defs><path d="M32 9l19 7v13c0 12.5-8 21.5-19 26-11-4.5-19-13.5-19-26V16z" fill="url(#logo-g)"/><path d="M22.5 32.5l6.5 6.5 12.5-13" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/></svg>QA Certification Roadmap</h1>
     <p class="lede">Software testing certifications, mapped by domain and level. Pick the domain that matches your work, start at L1, and climb. Select any certification for requirements, fees and where the information comes from.</p>
   </div>
   <div class="intro-side">
